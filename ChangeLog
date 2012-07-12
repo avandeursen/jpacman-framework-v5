@@ -1,0 +1,244 @@
+2012-07-12	Arie van Deursen
+	* Version 5.2.9
+	* First version distributed via github.
+
+2012-07-12	Arie van Deursen
+	* Version 5.2.1
+	* Moving from svn towards github.
+
+
+2012-03-18	Arie van Deursen
+	* Version 5.2.0
+	* Added status bar to UI
+	* Let button panel observe the PacmanInteraction state machine.
+	* Labwork part III, 2011/2012.
+
+2012-03-18	Arie van Deursen
+	* Version 5.1.1
+	* Added UML class diagrams in docs folder
+	* Included GameTest case
+	* Prepared framework for extension, such as undo functionality.
+	* PacmanInteraction now observes / gets notified of changes in the game's state.
+
+2012-03-01	Arie van Deursen
+	* Version 5.1.0
+	* Scenarios now in docs file
+	* Final checkstyle & PMD issues resolved.
+
+2012-02-29	Arie van Deursen
+	* Version 5.0.3
+	* Acceptance test suite for ghosts
+	* Scenarios in docs folder
+	* PacmanInteraction separated through interface
+	* PacmanInteraction state machine well defined.
+
+2012-02-28	Arie van Deursen
+	* Version 5.0.2
+	* Provided acceptance testing infrastructure
+	* Made framework extensible
+	* Continuous integration via Jenkins / Cloudbees.
+
+2012-02-9	Arie van Deursen
+	* Version 5.0.1
+	* Moved some answers out of the framework
+	* Updated pom.
+	* Release for labwork part I, 2011/2012.
+
+2012-01-25 	Arie van Deursen
+	* Version 5.0.0
+	* Major refactoring: smaller classes, more interfaces,
+	  single responsibility principle, tell/don't ask.
+	* Using mockito for unit testing
+	* Separate framework from actual solution.
+	* Some functionality not yet working
+	* Preliminary release for teaching assistants.
+
+2012-01-31  Arie van Deursen
+	* Version 4.4.5
+	* Release for TU/e
+	* Some small cleaning up in the test cases.
+	* Development mostly deferred to totally new code base for JPacman 5.
+
+2011-11-29	Arie van Deursen
+	* Version 4.4.4
+	* Documentation: Updated (yellowgrass issue 11)
+	* Refactoring: Cleaned up test cases in relation to documentation.
+
+2011-02-17	Arie van Deursen
+	* Version 4.4.3
+	* Yellowgrass issue 7: .pmd and .checkstyle also in Zip
+	* Yellowgrass issue 8: patch files: documented in issue.
+
+2011-02-06	Arie van Deursen
+	* Version 4.4.2
+	* Fixed yellowgrass issue 5: scenarios should be included in zip
+	* Fixed yellowgrass issue 1: creating a zipped source dist with mvn
+	* Cleaned up zip target in ant build.xml
+
+2011-02-04	Arie van Deursen
+	* Version 4.4.1
+	* Fixed yellowgrass isue 4: .eclipse file refers to old junit version
+
+2011-02-01	Arie van Deursen
+	* Version 4.4.0
+	* Tunnels implemented
+	* Cell-Guest association one-to-many
+	* Monsters can move over food
+	* New maze at level 1.
+
+2011-01-20  Arie van Deursen
+	* Version 4.3.7.
+	* PMD activated
+	* Various changes due to PMD.
+
+2011-01-14  Arie van Deursen
+	* Version 4.3.6
+	* Various improvements due to testing with Google WindowTester
+	* mvn 3 compatible
+
+2010-01-30  Arie van Deursen
+	* Version 4.3
+	* Checkstyle
+
+2009-02-03	Arie van Deursen
+	* Version 4.1
+	* Various small improvements to prepare for next lecture round.
+
+2009-01-31	Arie van Deursen
+	* Version 4.0
+	* Game can be loaded from file
+	* File of game specified in jpacamn.properties file
+	* Proper exception handling if map is incorrect
+	* Various refactorings related to this year's exercises
+	* Compliant with ant 1.7, Eclipse 3.4, Java 1.6, JUnit 4.5
+	* Beginning of test strategy document.
+
+2008-03-31	Arie van Deursen
+
+	* Version 3.0.3 and 3.0.4
+	* Various small refactorings
+	* Started using mylyn
+
+
+2008-02-15	Arie van Deursen
+
+	* Version 3.0.2
+	* pom.xml now also supports cobertura
+	* various checkstyle-inspired improvements
+
+
+2008-02-12	Arie van Deursen
+
+	* Version 3.0.1
+	* Random monster moving now truly random.
+	* Starting to adopt checkstyle, sun conventions
+	* Many small refactorings thanks to checkstyle
+	* mvn 2.0 pom.xml working
+	
+	
+2008-02-04	Arie van Deursen
+	
+	* Version 3.0
+	* Largely similar to 2.4
+
+	
+2008-01-30	Arie van Deursen
+
+	* Version 2.4
+	* Preparing for 3.0 to be released next week, for use in course IN3205.
+	* Several test cases reorganized / refactored.
+	* Put tests for Cell-Guest association in (new class) GuestTest.
+	* Switched to new (Delft) cvs repository
+	* Directory structure follows mvn 2.0 standard layout
+	* Use of Emma instead of Clover as coverage analysis tool
+	* Included Eclipse .project and .classpath files in distribution.
+
+2007-11-14	Arie van Deursen
+
+	* Version 2.3
+	* Preparing for switch to new cvs repo
+	* Adopted animations for players and monsters.
+
+2006-11-27	Arie.vanDeursen@tudelft.nl
+
+	* Version 2.2
+	* Used java.util.Observer and Observables
+	* Fixed incorrect test for failing preconditions in, e.g., BoardTest
+
+2006-11-17 Arie van Deursen
+
+	* Version 2.1
+	* Fixed some small issues discovered by students / assistants
+	* Provided to Software Engineering Project for comparison.
+
+2006-11-09    <Arie.vanDeursen@tudelft.nl>
+
+	* Version 2.0
+	* Introduced TestUtils class
+	* Added example of assertion testing in BoardTest.
+	* Temporarily removed maven support -- not working.
+
+2006-11-01 Arie van Deursen
+	
+	* Version 1.9
+	* Included ArogUML docs; various minor changes thanks to 
+	  creating these docs.
+	* Added undo implementation.
+
+	
+2006-09-05  Arie van Deursen
+	
+        * Version 1.8.1
+        * Various improvements thanks to SDR inspections, cleaning up code
+  	  and test suite.
+
+	
+2006-08-07  Arie van Deursen
+	
+        * Version 1.8
+        * Ready for JUnit 4.
+        * Added explicit acceptance test suite.    
+
+	
+2006-07-01  Arie van Deursen
+	
+	* Version 1.7
+	* Ready for Java 1.5
+
+	
+2005-08-26  Arie van Deursen  <arie@kola.cwi.nl>
+	
+	* Version 1.5
+	* Added textual documentation in doc directory
+
+	
+2005-06-06 Arie van Deursen <Arie.van.Deursen@cwi.nl>
+
+	* Version 1.4
+	* Added test cases for Observer
+	* Improved (some) of the Javadocs
+
+	
+2004-11-09    <Arie.van.Deursen@cwi.nl>
+
+	* Added docs directory with models used for test creation
+	* Cleaned up the Engine state transitions.
+
+2004-09-08    <Arie.van.Deursen@cwi.nl>
+
+	* Version 1.3, distributed to students.
+	* Updated "zip" task so that files are contained in pacman-1.3/ dir
+
+	
+2004-09-07    <Arie.van.Deursen@cwi.nl>
+
+	* Version 1.2
+	* Added test cases for the controller
+	* Handed to in3420 students of 2004.
+
+	
+2004-09-03    <Arie.van.Deursen@cwi.nl>
+
+	* Completed the isolation of answers
+	* Release as 1.1 to teaching assistants
+	* Started with the ChangeLog -- better late than never.

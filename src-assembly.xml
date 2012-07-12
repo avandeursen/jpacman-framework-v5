@@ -1,0 +1,34 @@
+<!-- Assembly intended for mvn package task in order to create the source 
+	distribution. -->
+
+<assembly>
+	<id>src</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+
+	<includeBaseDirectory>true</includeBaseDirectory>
+
+	<!-- We're producing a source distribution, so quite a bit needs to be included. -->
+	<fileSets>
+		<!-- The actual sources. -->
+		<fileSet>
+			<directory>src</directory>
+			<outputDirectory>src</outputDirectory>
+		</fileSet>
+		<!--Get misc user files -->
+		<fileSet>
+			<directory>${project.basedir}</directory>
+			<outputDirectory>/</outputDirectory>
+			<includes>
+				<include>*.xml</include>
+				<include>.checkstyle</include>
+				<include>.pmd</include>
+				<include>.classpath</include>
+				<include>.project</include>
+				<include>LICENSE.txt</include>
+				<include>docs/*.*</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+</assembly>

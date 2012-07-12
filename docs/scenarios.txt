@@ -1,0 +1,199 @@
+JPacman Scenarios
+(c) Arie van Deursen, Delft University of Technology
+25 January 2011
+
+
+1. Background
+
+This document describes a series of JPacman user scenarios, 
+following the format of behavior-driven development 
+(see http://dannorth.net/whats-in-a-story/). 
+Thus, each scenario is of the form:
+
+Title (one line describing the story)
+ 
+Narrative:
+As a    [role]
+I want  [feature]
+So that [benefit]
+ 
+Acceptance Criteria: (presented as Scenarios)
+ 
+Scenario 1: Title
+Given [context]
+  And [some more context]...
+When  [event]
+Then  [outcome]
+  And [another outcome]...
+ 
+Scenario 2: ...
+
+
+
+2. JPacman
+
+JPacman 5 is a very simple JPacman derivative, to be used for
+educational purposes. Essential features such as multiple levels and
+multiple players, energizers and different ghost types are postponed
+for later releases (and may be implemented by students as an
+exercise).  Furthermore, to give the game a somewhat different flavor,
+JPacman deviates from standard Pacman behavior in several ways.  This
+document describes the requirements as a series of use cases, and
+explains what the GUI should look like.
+
+The JPacman game is played on a rectangular board.  A cell on the
+board can be empty, or can contain the player itself, one of the
+several ghosts, a piece of food, or a wall. Moveable sprites such as
+the player and the ghosts can make single-step horizontal or vertical
+moves.  Tunnels on the border make it possible to move from one border
+to the opposite border.  When a player moves over a tile containing
+food, the player earns points and the food disappears. If a player and
+a ghost meet at the same cell, the player dies and the game is over.
+The player wins the game once he or she has eaten all food.
+
+
+3. User Stories
+
+STORY 1 -- STARTUP:
+As a player
+ I want to start the game
+so that I can actually play
+
+Scenario S1.1: Start.
+Given the user has launched the JPacman GUI;
+When  the user presses the "Start" button;
+Then  the game should start.
+
+
+
+STORY 2 -- MOVE THE PLAYER:
+As a player, 
+ I want to move my Pacman arround on the board;
+So that I can eat all food and win the game.
+
+Scenario S2.1: The player moves.
+Given the game has started,
+  and my Pacman is next to an empty cell;
+When  I press an arrow key towards that cell;
+Then  my Pacman can move to that cell
+
+Scenario S2.2: The player eats
+Given the game has started,
+  and my Pacman is next to a cell containing food;
+When  I press an arrow key towards that cell;
+Then  my Pacman can move to that cell,
+  and I earn the points for that cell,
+  and the food disappears from that cell.
+
+Scenario S2.3: The player dies
+Given the game has started,
+  and my Pacman is next to a cell containing a ghost;
+When  I press an arrow key towards that cell;
+Then  my Pacman dies,
+  and the game is over.
+  
+Scenario S2.4: The move fails
+Given the game has started,
+  and my Pacman is next to a cell containing a wall;
+When  I press an arrow key towards that cell;
+Then  the move is not conducted.
+
+Scenario S2.5: Player wins, extends S2.2
+When I have eaten the last food;
+Then I win the game.
+
+
+STORY 3 -- MOVE THE GHOST:
+As a ghost;
+ I get automatically moved around;
+So that I can try to kill the player.
+
+Scenario S3.1: A ghost moves.
+Given the game has started,
+  and a ghost is next to an empty cell;
+When  a tick event occurs;
+Then  the ghost can move to that cell.
+
+Scenario S3.2: The ghost moves over food.
+Given the game has started,
+  and a ghost is next to a cell containing food;
+When  a tick event occurs;
+Then  the ghost can move to the food cell,
+  and the food on that cell is not visible anymore.
+
+Scenario S3.3: The ghost leaves a food cell.
+Given a ghost is on a food cell (see S3.2);
+When  a tick even occurs;
+Then  the ghost can move to away from the food cell,
+  and the food on that cell is is visible again.
+
+Scenario S3.4: The player dies.
+Given the game has started,
+  and a ghost is next to a cell containing the player;
+When  a tick event occurs;
+Then  the ghost can move to the player,
+  and the game is over.
+
+
+STORY 4 -- SUSPEND THE GAME:
+As a player,
+ I want to be able to suspend the game;
+So that I can pause and do something else.
+
+Scenario S4.1: Suspend the game.
+Given the game has started;
+When  the player clicks the "Stop" button;
+Then  all moves from ghosts and the player are suspended.
+
+Scenario S4.2: Restart the game.
+Given the game is suspended;
+When  the player hits the "Start" button;
+ Then the game is resumed.
+
+
+STORY 5 -- EXIT THE GAME:
+As a player,
+ I want to be able to quit the game;
+So that I can do something else.
+
+Scenario S5.1: Exit the game
+Given the game has started;
+When  the player clicks the "Exit" button;
+Then  the game is terminated.
+
+
+STORY 6 -- RESTART THE GAME:
+As a player,
+ I want to be able to restart the game after winning or loosing;
+So that I can enjoy another JPacman game.
+
+Scenario S6.1: Restart the game.
+Given the game is over (by winning or by getting killed);
+When  I hit the "Start" button;
+Then  a new JPacman game is started.
+
+
+4. User Interface
+
+The user interface for JPacman is relatively simple.  The game is
+rectangular board, which can be read from a special text file with
+simple character encoding. On the GUI, special (animated) images or
+colored squares are used for the ghost, food, empty cells, and wall
+cells on the board.  The direction of the last (attempted) move is
+reflected in the image used for the player. The GUI furthermore
+contains a "Start", "Exit", and "Suspend" button (at the bottom of the
+GUI), as well as an indicator for the amount of food eaten and the
+game's overall state (playing, game won, player died, ready to start
+the play).  The state indicator field can also be used to display
+helpful information on possible keys to press (e.g., press start, use
+arrow keys).
+
+
+5. Development Requirements
+
+JPacman should be developed in Java. It should be set up so that it
+can easily be used by (the latest versions of) standard (open source)
+Java development tools, such as Eclipse, ant, maven, and JUnit. To
+allow for working with maven, the maven standard directory structure
+should be used.  Since the educational purposes include testing,
+JPacman should be delivered with an extensive test suite.

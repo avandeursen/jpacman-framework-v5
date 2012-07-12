@@ -1,0 +1,10 @@
+JPacman Educational Edition
+
+(c) Arie van Deursen, Delft University of Technology, 2004-2011
+
+This software is only intended for use in the course
+"Software Testing and Quality Engineering", IN3205
+taught as part of the computer science bachelor at 
+Delft University of Technology.
+
+For all other uses, contact the author.

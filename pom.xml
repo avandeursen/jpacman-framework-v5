@@ -11,6 +11,18 @@
 	<name>jpacman-framework</name>
 	<url>http://www.st.ewi.tudelft.nl/~arie/</url>
 
+	<organization>
+		<name>Software Engineering Research Group, 
+		  Delft University of Technology, The Netherlands</name>
+		<url>http://www.se.ewi.tudelft.nl/</url>
+	</organization>
+	<inceptionYear>2003</inceptionYear>
+	<description>JPacman is a little game inspired by Pacman.  
+	  It is intended for educational purposes, showing how unit 
+	  testing and software development can be done together in a 
+	  typical Java project.
+	</description>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<targetJdk>1.6</targetJdk>
@@ -94,7 +106,6 @@
 				</configuration>
 			</plugin>
 
-
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>2.3</version>
@@ -135,7 +146,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -214,10 +224,4 @@
 		</plugins>
 	</build>
 
-	<organization>
-		<name>Software Engineering Research Group, Delft University of Technology, The Netherlands</name>
-		<url>http://www.se.ewi.tudelft.nl/</url>
-	</organization>
-	<inceptionYear>2003</inceptionYear>
-	<description>JPacman is a little game inspired by Pacman.  It is intended for educational purposes, showing how unit testing and software development can be done together in a typical Java project.</description>
 </project>

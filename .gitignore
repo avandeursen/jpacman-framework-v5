@@ -1,6 +1,5 @@
-*.class
+# For our emacs users
+*~
 
-# Package Files #
-*.jar
-*.war
-*.ear
+# All generated files will be in target thanks to the use of maven
+target/

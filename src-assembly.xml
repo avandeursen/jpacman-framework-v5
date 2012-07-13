@@ -24,8 +24,6 @@
 				<include>*.xml</include>
 				<include>.checkstyle</include>
 				<include>.pmd</include>
-				<include>.classpath</include>
-				<include>.project</include>
 				<include>LICENSE.txt</include>
 				<include>docs/*.*</include>
 			</includes>

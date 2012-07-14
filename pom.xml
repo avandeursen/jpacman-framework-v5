@@ -80,7 +80,7 @@
 
 	<scm>
 	  <connection>scm:git:git://github.com/avandeursen/jpacman-framework.git</connection>
-	  <url>scm:git:git://github.com/avandeursen/jpacman-framework.git</url>
+	  <url>https://github.com/avandeursen/jpacman-framework</url>
 	  <developerConnection>scm:git:git://github.com/avandeursen/jpacman-framework.git</developerConnection>
 	</scm>
 

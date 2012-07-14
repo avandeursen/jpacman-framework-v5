@@ -67,11 +67,16 @@
 
 	<licenses>
 		<license>
-			<name>JPacman Educational Edition</name>
-			<url>LICENSE.txt</url>
+		  <name>The Apache Software License, Version 2.0</name>
+		  <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		  <distribution>repo</distribution>
 		</license>
 	</licenses>
 
+	<issueManagement>
+	  <system>Github</system>
+	  <url>https://github.com/avandeursen/jpacman-framework/issues</url>
+	</issueManagement>
 
 	<dependencies>
 		<dependency>

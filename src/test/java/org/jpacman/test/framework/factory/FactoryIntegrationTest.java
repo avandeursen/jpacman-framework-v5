@@ -8,6 +8,7 @@ import org.jpacman.framework.factory.IGameFactory;
 import org.jpacman.framework.factory.MapParser;
 import org.jpacman.framework.model.Board;
 import org.jpacman.framework.model.Game;
+import org.jpacman.framework.model.Food;
 import org.jpacman.framework.model.IBoardInspector.SpriteType;
 import org.junit.Before;
 import org.junit.Test;
@@ -64,5 +65,10 @@ public class FactoryIntegrationTest {
 
 		// were all ghosts added?
 		assertEquals(2, g.getGhosts().size());
+
+		// was the food actually added?
+		final int cellsWithFoodCount = 3;
+		assertEquals(cellsWithFoodCount * Food.DEFAULT_POINTS, 
+			     g.getPointManager().totalFoodInGame());
 	}
 }

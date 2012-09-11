@@ -254,7 +254,6 @@
 						<param>org.jpacman.test.framework.model.PointManagerTest</param>
 						<param>org.jpacman.test.framework.model.BoardTileAtTest</param>
 						<param>org.jpacman.test.framework.model.GameTest</param>
-						<param>org.jpacman.test.framework.accept.AbstractAcceptanceTest</param>
 					</targetTests>
 					<excludedMethods>
 						<!-- methods called invariant are only used for assertion checking. -->

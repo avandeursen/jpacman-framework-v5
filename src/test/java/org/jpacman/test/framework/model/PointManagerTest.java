@@ -2,6 +2,7 @@ package org.jpacman.test.framework.model;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import org.jpacman.framework.model.Player;
 import org.jpacman.framework.model.PointManager;
@@ -43,6 +44,7 @@ public class PointManagerTest {
 	@Test public void testEatHalf() {
 		pm.consumePointsOnBoard(player, totalPoints / 2);
 		assertFalse(pm.allEaten());
+		assertEquals(totalPoints / 2, pm.getFoodEaten());
 	}
 	
 	/**

@@ -232,6 +232,47 @@
 					</reportPlugins>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<!-- invoke with 
+				     mvn org.pitest:pitest-maven:mutationCoverage
+				-->
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>0.28</version>
+				<configuration>
+					<targetClasses>
+						<param>org.jpacman.framework.factory.DefaultGameFactory</param>
+						<param>org.jpacman.framework.model.Sprite</param>
+						<param>org.jpacman.framework.model.Board</param>
+						<param>org.jpacman.framework.model.PointManager</param>
+						<param>org.jpacman.framework.model.Game</param>
+					</targetClasses>
+					<targetTests>
+						<param>org.jpacman.test.framework.factory.FactoryIntegrationTest</param>
+						<param>org.jpacman.test.framework.model.SpriteTest</param>
+						<param>org.jpacman.test.framework.model.PointManagerTest</param>
+						<param>org.jpacman.test.framework.model.BoardTileAtTest</param>
+						<param>org.jpacman.test.framework.model.GameTest</param>
+						<param>org.jpacman.test.framework.accept.AbstractAcceptanceTest</param>
+					</targetTests>
+					<excludedMethods>
+						<!-- methods called invariant are only used for assertion checking. -->
+						<param>*nvariant*</param>
+					</excludedMethods>
+					<maxMutationsPerClass>
+					  7
+					</maxMutationsPerClass>
+					<verbose>
+					  true
+					</verbose>
+					<jvmArgs>
+						<value>-enableassertions</value>
+					</jvmArgs>
+				</configuration>
+			</plugin>
+
+
 		</plugins>
 	</build>
 

@@ -41,10 +41,11 @@ public class PointManagerTest {
 	/**
 	 * After half has been eaten, there's still more to eat.
 	 */
-	@Test public void testEatHalf() {
-		pm.consumePointsOnBoard(player, totalPoints / 2);
+	@Test public void testEatSomeFood() {
+		final int pointsToEat = totalPoints / 2;
+		pm.consumePointsOnBoard(player, pointsToEat);
 		assertFalse(pm.allEaten());
-		assertEquals(totalPoints / 2, pm.getFoodEaten());
+		assertEquals(pointsToEat, pm.getFoodEaten());
 	}
 	
 	/**

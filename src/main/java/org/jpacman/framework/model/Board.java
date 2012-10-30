@@ -147,7 +147,7 @@ public class Board implements IBoardInspector {
 	 * @param current Starting position
 	 * @param max Maximum length of the range
 	 * @param delta Increment to make on the delta (positive or negative).
-	 * @return
+	 * @return current + delta within [0..max]
 	 */
 	private int tunnelledCoordinate(int current, int max, int delta) {
 		assert current >= 0 : "PRE: current should be >= 0 but is " + current;

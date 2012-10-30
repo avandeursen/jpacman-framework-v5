@@ -104,9 +104,9 @@ public class Game extends Observable
 	}
 
 	/**
-	 * Check if there's room on the target tile.
-	 * @param target Tile to be occupied by other sprite.
-	 * @return
+	 * Check if there's room on the target tile for another sprite.
+	 * @param target Tile to be occupied by another sprite.
+	 * @return true iff target tile can be occupied.
 	 */
 	private boolean tileCanBeOccupied(Tile target) {
 		assert target != null : "PRE: Argument can't be null";

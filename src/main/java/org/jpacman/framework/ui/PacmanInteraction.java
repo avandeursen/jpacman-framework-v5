@@ -7,7 +7,6 @@ import java.util.Observer;
 
 import org.jpacman.framework.controller.IController;
 import org.jpacman.framework.model.Direction;
-import org.jpacman.framework.model.Game;
 import org.jpacman.framework.model.IGameInteractor;
 
 /**

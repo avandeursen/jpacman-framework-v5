@@ -23,7 +23,7 @@ public class PacmanInteraction extends Observable implements IPacmanInteraction,
 	public enum MatchState {
 		PLAYING("Playing"),
 		PAUSING("Halted"),
-		WON("You hav won :-)"),
+		WON("You have won :-)"),
 		LOST("You have lost :-(");
 		
 		private String theMessage;

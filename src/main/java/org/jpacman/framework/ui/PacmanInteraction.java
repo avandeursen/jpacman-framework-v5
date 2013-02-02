@@ -28,10 +28,17 @@ public class PacmanInteraction extends Observable implements IPacmanInteraction,
 		
 		private String theMessage;
 		
+		/**
+		 * Create one of the states.
+		 * @param m The message for this state.
+		 */
 		MatchState(String m) {
 			theMessage = m;
 		}
 		
+		/**
+		 * @return The message that belongs to the current state.
+		 */
 		String message() {
 			return theMessage;
 		}
@@ -165,6 +172,9 @@ public class PacmanInteraction extends Observable implements IPacmanInteraction,
 		}		
 	}
 	
+	/**
+	 * @return The handle to interact with the underlying game.
+	 */
 	protected IGameInteractor getGame() {
 		return gameInteractor;
 	}
@@ -174,8 +184,12 @@ public class PacmanInteraction extends Observable implements IPacmanInteraction,
 		updateState();
 	}
 	
+	/**
+	 * Verify whether the game was lost/won,
+	 * and if so update the state accordingly.
+	 */
 	public void updateState() {
-		if (currentState == MatchState.PLAYING){
+		if (currentState == MatchState.PLAYING) {
 			if (gameInteractor.died()) {
 				updateState(MatchState.LOST);
 				stopControllers();

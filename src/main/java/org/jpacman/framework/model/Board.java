@@ -153,7 +153,7 @@ public class Board implements IBoardInspector {
 		assert current >= 0 : "PRE: current should be >= 0 but is " + current;
 		assert current < max : "PRE: current should be < max but is " + current;
 
-		// additional max needed if (current + delta) < 0.
+		// additional modulo max when (current + delta) < 0.
 		int result = ((current + delta) % max + max) % max;
 
 		assert result >= 0 : "POST: result should be >= 0, but is " + result;

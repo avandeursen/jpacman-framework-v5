@@ -79,8 +79,9 @@ public class MainUI extends JFrame implements Observer, IDisposable {
       	boardView = createBoardView();
       	animator = new Animator(boardView);
     	
-    	pi = (pi == null ? new PacmanInteraction() : pi)
-    		.withDisposable(this)
+      	if (pi == null) { pi = new PacmanInteraction(); }
+      	
+      	pi.withDisposable(this)
     		.withGameInteractor(getGame())
     		.controlling(ghostController)
     		.controlling(animator);
@@ -145,15 +146,18 @@ public class MainUI extends JFrame implements Observer, IDisposable {
         setSize(width, height);
     }
     
-    private JTextField createStatusField() {
+    private void createStatusField() {
     	final int statusWidth = 12;
     	statusField = new JTextField("", statusWidth);
     	statusField.setEditable(false);
     	statusField.setName("jpacman.status");
-    	return statusField;
     }
     
-    protected JPanel createStatusPanel() {
+    /**
+     * Create the status panel displaying points,
+     * whether the player is alive, etc.
+     */
+    protected void createStatusPanel() {
     	statusPanel = new JPanel();
     	
     	createStatusField();
@@ -164,11 +168,7 @@ public class MainUI extends JFrame implements Observer, IDisposable {
     	
     	statusPanel.add(statusField);
     	statusPanel.add(points);
-    	
-    	return statusPanel;
     }
-
-    
 
     /**
      * The state of the game has changed.

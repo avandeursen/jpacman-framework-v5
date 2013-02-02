@@ -42,7 +42,7 @@ import org.mockito.runners.MockitoJUnitRunner;
  * The test suite is open for extension for testing
  * Game subclasses.
  * 
- *  @author: Arie van Deursen, March 2012 
+ *  @author Arie van Deursen, March 2012 
  */
 @RunWith(MockitoJUnitRunner.class)
 public class GameTest {

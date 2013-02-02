@@ -37,31 +37,42 @@ public class PacmanKeyListener implements KeyListener {
 		code = event.getKeyCode();
 
 		switch (code) {
-		case KeyEvent.VK_UP: // or
+		case KeyEvent.VK_UP:
+			/* or */
 		case KeyEvent.VK_K:
 			modelEvents.up();
 			break;
-		case KeyEvent.VK_DOWN: // or
+			
+		case KeyEvent.VK_DOWN:
+			/* or */
 		case KeyEvent.VK_J:
 			modelEvents.down();
 			break;
-		case KeyEvent.VK_LEFT: // or
+			
+		case KeyEvent.VK_LEFT:
+			/* or */
 		case KeyEvent.VK_H:
 			modelEvents.left();
 			break;
-		case KeyEvent.VK_RIGHT: // or
+			
+		case KeyEvent.VK_RIGHT:
+			/* or */
 		case KeyEvent.VK_L:
 			modelEvents.right();
 			break;
+
 		case KeyEvent.VK_Q:
 			modelEvents.stop();  
 			break;
+			
 		case KeyEvent.VK_X:
 			modelEvents.exit(); 
 			break;
+			
 		case KeyEvent.VK_S:
 			modelEvents.start(); 
 			break;
+			
 		default:
 			// all other events ignored.
 		}

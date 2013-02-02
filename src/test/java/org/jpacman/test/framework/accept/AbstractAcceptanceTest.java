@@ -8,7 +8,6 @@ import org.jpacman.framework.factory.FactoryException;
 import org.jpacman.framework.model.Ghost;
 import org.jpacman.framework.model.Player;
 import org.jpacman.framework.model.Tile;
-import org.jpacman.framework.ui.IPacmanInteraction;
 import org.jpacman.framework.ui.MainUI;
 import org.jpacman.framework.ui.PacmanInteraction;
 import org.junit.After;
@@ -47,8 +46,7 @@ public class AbstractAcceptanceTest {
 	 * invoked programmatically.
 	 * Deprecated: will be made private.
 	 */
-	@Deprecated
-	protected PacmanInteraction engine;
+	private PacmanInteraction engine;
 	
 	/**
 	 * The main (Swing) user interface.

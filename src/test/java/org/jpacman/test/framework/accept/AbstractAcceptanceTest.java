@@ -3,6 +3,8 @@ package org.jpacman.test.framework.accept;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.jpacman.framework.controller.IController;
 import org.jpacman.framework.factory.FactoryException;
 import org.jpacman.framework.model.Ghost;
@@ -146,7 +148,9 @@ public class AbstractAcceptanceTest {
 	 * @return The single ghost living in this game.
 	 */
 	public Ghost theGhost() {
-		// we know there's just one game on the map.
-		return getUI().getGame().getGhosts().get(0);
+		// we know there's just one ghost on the map.
+		List<Ghost> allGhosts = getUI().getGame().getGhosts();
+		assert allGhosts.size() == 1;
+		return allGhosts.get(0);
 	}
 }

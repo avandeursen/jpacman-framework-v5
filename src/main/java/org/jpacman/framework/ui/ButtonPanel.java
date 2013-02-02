@@ -140,6 +140,9 @@ public class ButtonPanel extends JPanel implements Observer {
     	return exitButton;
     }
     
+    /**
+     * Hold the game and (temporarily) stop all interaction.
+     */
     public void pause() {
 		assert invariant();
 		getPacmanInteractor().stop();
@@ -149,6 +152,9 @@ public class ButtonPanel extends JPanel implements Observer {
 		assert invariant();   	
     }
     
+    /**
+     * Activate the game.
+     */
     public void start() {
 		assert pacmanInteractor != null : "PRE: Listeners initialized.";
 		assert invariant();
@@ -176,10 +182,10 @@ public class ButtonPanel extends JPanel implements Observer {
 		
 	private void enableStartStop() {
 		MatchState s = pacmanInteractor.getCurrentState();
-		if (s == MatchState.PAUSING){ 
+		if (s == MatchState.PAUSING) { 
 			stopButton.setEnabled(false);
 			startButton.setEnabled(true);
-		} else if (s == MatchState.PLAYING){
+		} else if (s == MatchState.PLAYING) {
 			stopButton.setEnabled(true);
 			startButton.setEnabled(false);
 		} else {

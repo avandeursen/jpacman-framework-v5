@@ -67,24 +67,44 @@ public class PacmanInteraction extends Observable implements IPacmanInteraction,
 			new ArrayList<IController>();
 	
 
+	/**
+	 * Verify consistency with the state of the game.
+	 */
+	private boolean invariant() {
+		return
+			currentState == MatchState.WON 
+				&& gameInteractor.won()
+			||
+			currentState == MatchState.LOST 
+				&& gameInteractor.died()
+			||
+			(currentState == MatchState.PLAYING || currentState == MatchState.PAUSING)
+				&& !(gameInteractor.died() || gameInteractor.won());
+	}
+	
 	@Override
 	public void start() {
+		assert invariant();
 		if (currentState == MatchState.PAUSING) { 
 			startControllers();
 		}
 		updateState(MatchState.PLAYING);
+		assert invariant();
 	}
 
 	@Override
 	public void stop() {
+		assert invariant() : "Unexpected state in " + currentState;
 		if (currentState == MatchState.PLAYING) {
 			stopControllers();
+			updateState(MatchState.PAUSING);
 		}
-		updateState(MatchState.PAUSING);
+		assert invariant();
 	}
 
 	@Override
 	public void exit() {
+		assert invariant();
 		stopControllers();
 		disposableWindow.dispose();
 	}
@@ -115,11 +135,13 @@ public class PacmanInteraction extends Observable implements IPacmanInteraction,
 	 * @param dir New direction.
 	 */
 	private void movePlayer(Direction dir) {
+		assert invariant() : currentState;
 		if (currentState == MatchState.PLAYING) {
 			gameInteractor.movePlayer(dir);
 			updateState();
 		}
 		// else: ignore move event.
+		assert invariant();
 	}
 	
 	/**
@@ -185,20 +207,24 @@ public class PacmanInteraction extends Observable implements IPacmanInteraction,
 	}
 	
 	/**
+	 * The state of the external game may have changed.
 	 * Verify whether the game was lost/won,
 	 * and if so update the state accordingly.
 	 */
 	public void updateState() {
-		if (currentState == MatchState.PLAYING) {
-			if (gameInteractor.died()) {
-				updateState(MatchState.LOST);
-				stopControllers();
-			}
-			if (gameInteractor.won()) {
-				updateState(MatchState.WON);
-				stopControllers();
-			}
+		// invariant may have been invalidated by outside world.
+		if (currentState == MatchState.PLAYING && gameInteractor.died()) {
+			updateState(MatchState.LOST);
+			stopControllers();
+		} else if (currentState == MatchState.PLAYING && gameInteractor.won()) {
+			updateState(MatchState.WON);
+			stopControllers();
+		} else if (currentState == MatchState.WON && !gameInteractor.won()
+				|| currentState == MatchState.LOST && !gameInteractor.died()) {
+			updateState(MatchState.PAUSING);
+			stopControllers();
 		}
+		assert invariant();
 	}
 	
 	private void updateState(MatchState nextState) {

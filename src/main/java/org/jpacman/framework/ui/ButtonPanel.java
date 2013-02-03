@@ -191,19 +191,4 @@ public class ButtonPanel extends JPanel implements Observer {
 		}
 		assert invariant();
 	}
-		
-	private void old_enableStartStop() {
-		MatchState s = pacmanInteractor.getCurrentState();
-		if (s == MatchState.PAUSING) { 
-			stopButton.setEnabled(false);
-			startButton.setEnabled(true);
-		} else if (s == MatchState.PLAYING) {
-			stopButton.setEnabled(true);
-			startButton.setEnabled(false);
-		} else {
-			// game over
-			stopButton.setEnabled(false);
-			startButton.setEnabled(false);			
-		}
-	}
 }

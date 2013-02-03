@@ -53,7 +53,7 @@ public class MoveGhostStoryTest extends AbstractAcceptanceTest {
 		// given
 		getEngine().start();
 		// when
-		getUI().getGame().moveGhost(theGhost(), Direction.DOWN);		
+		moveGhost(Direction.DOWN);		
 		// then
 		assertEquals(emptyTile, theGhost().getTile());
 	}
@@ -66,7 +66,7 @@ public class MoveGhostStoryTest extends AbstractAcceptanceTest {
 		// given
 		getEngine().start();
 		// when
-		getUI().getGame().moveGhost(theGhost(), Direction.UP);		
+		moveGhost(Direction.UP);		
 		// then
 		assertEquals(foodTile, theGhost().getTile());
 		assertEquals(IBoardInspector.SpriteType.GHOST, foodTile.topSprite().getSpriteType());
@@ -80,7 +80,7 @@ public class MoveGhostStoryTest extends AbstractAcceptanceTest {
 		// given
 		test_S3_2_GhostFood();
 		// when
-		getUI().getGame().moveGhost(theGhost(), Direction.DOWN);		
+		moveGhost(Direction.DOWN);		
 		// then
 		assertEquals(IBoardInspector.SpriteType.FOOD, foodTile.topSprite().getSpriteType());
 	}
@@ -93,8 +93,15 @@ public class MoveGhostStoryTest extends AbstractAcceptanceTest {
 		// given
 		getEngine().start();
 		// when
-		getUI().getGame().moveGhost(theGhost(), Direction.LEFT);		
+		moveGhost(Direction.LEFT);		
 		// then
 		assertFalse(getPlayer().isAlive());
+	}
+	
+	/**
+	 * @param dir The direction to move the ghost to.
+	 */
+	private void moveGhost(Direction dir) {
+		getUI().getGame().moveGhost(theGhost(), dir);
 	}
 }

@@ -1,14 +1,12 @@
 package org.jpacman.framework.ui;
 
-import java.util.Observer;
-
 /**
  * The high level events that can occur in Pacman,
  * and that can be triggered via keyboard shortcuts.
  * 
  * @author Arie van Deursen, TU Delft, Feb 4, 2012
  */
-public interface IPacmanInteraction extends Observer {
+public interface IPacmanInteraction {
 
 	/**
 	 * Move the player one up.

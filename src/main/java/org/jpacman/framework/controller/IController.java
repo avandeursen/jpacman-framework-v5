@@ -6,7 +6,6 @@ package org.jpacman.framework.controller;
  * <p>
  *
  * @author Arie van Deursen, 3 September, 2003
- * @version $Id: IMonsterController.java 3394 2010-02-21 16:09:39Z arievandeursen $
  */
 
 public interface IController {

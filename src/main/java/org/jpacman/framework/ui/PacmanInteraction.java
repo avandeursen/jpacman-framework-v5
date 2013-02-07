@@ -87,8 +87,8 @@ public class PacmanInteraction extends Observable implements IPacmanInteraction,
 		assert invariant();
 		if (currentState == MatchState.PAUSING) { 
 			startControllers();
+			updateState(MatchState.PLAYING);
 		}
-		updateState(MatchState.PLAYING);
 		assert invariant();
 	}
 

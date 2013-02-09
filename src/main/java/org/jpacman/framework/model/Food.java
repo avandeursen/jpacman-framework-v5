@@ -26,7 +26,7 @@ public class Food extends Sprite {
 	/**
 	 * Constructor meets invariant of sub and superclass.
 	 */
-	public Food () {
+	public Food() {
 		assert foodInvariant() && spriteInvariant();
 	}
 

@@ -15,6 +15,20 @@ public class Food extends Sprite {
 	public static final int DEFAULT_POINTS = 10;
 	
 	private int points = DEFAULT_POINTS;
+	
+	/**
+	 * @return that food points are non-negative.
+	 */
+	protected final boolean foodInvariant() {
+		return points >= 0;
+	}
+	
+	/**
+	 * Constructor meets invariant of sub and superclass.
+	 */
+	public Food () {
+		assert foodInvariant() && spriteInvariant();
+	}
 
 	/**
 	 * @return The number of points for this piece of food.
@@ -22,12 +36,14 @@ public class Food extends Sprite {
 	public int getPoints() {
 		return points;
 	}
-
+		
 	/**
 	 * @param points New number of points.
 	 */
 	public void setPoints(int points) {
+		assert points >= 0;
 		this.points = points;
+		assert foodInvariant();
 	}
 	
 	/**

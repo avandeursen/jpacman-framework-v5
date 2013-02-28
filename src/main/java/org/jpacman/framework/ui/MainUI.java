@@ -24,19 +24,19 @@ import org.jpacman.framework.view.BoardView;
  */
 public class MainUI extends JFrame implements Observer, IDisposable {
 	
-	/**
-	 * Universal version ID for serialization.
-	 */
-	static final long serialVersionUID = -59470379321937183L;
-	
-	/**
-	 * The level we're currently playing.
-	 */
-	private final Level level;
-	
-	/**
-	 * The underlying game.
-	 */
+    /**
+     * Universal version ID for serialization.
+     */
+    static final long serialVersionUID = -59470379321937183L;
+    
+    /**
+     * The level we're currently playing.
+     */
+    private final Level level;
+    
+    /**
+     * The underlying game.
+     */
 	private transient IGameInteractor theGame;
 
 	/**
@@ -64,7 +64,7 @@ public class MainUI extends JFrame implements Observer, IDisposable {
 	 */
 	public MainUI() {
 		level = new Level();
-	}
+ 	}
 	
 
 	/**
@@ -74,124 +74,124 @@ public class MainUI extends JFrame implements Observer, IDisposable {
 	 * @return The main UI object
 	 */
 	public MainUI createUI() throws FactoryException {
-		assert getGame() != null;
-		assert ghostController != null;
-		
-		boardView = createBoardView();
-		animator = new Animator(boardView);
-		
-		if (pi == null) { pi = new PacmanInteraction(); }
-		
-		pi.withDisposable(this)
-			.withGameInteractor(getGame())
-			.controlling(ghostController)
-			.controlling(animator);
+    	assert getGame() != null;
+    	assert ghostController != null;
+    	
+      	boardView = createBoardView();
+      	animator = new Animator(boardView);
+    	
+      	if (pi == null) { pi = new PacmanInteraction(); }
+      	
+      	pi.withDisposable(this)
+    		.withGameInteractor(getGame())
+    		.controlling(ghostController)
+    		.controlling(animator);
 
-		addKeyListener(new PacmanKeyListener(pi));
-		getGame().attach(pi);
+        addKeyListener(new PacmanKeyListener(pi));
+        getGame().attach(pi);
 
-		createButtonPanel(pi).initialize();
-		createStatusPanel();
-		
-		JPanel mainGrid = createMainGrid();
-		getContentPane().add(mainGrid);
-		setGridSize();
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setName("jpacman.main");
-		setTitle("JPacman");  
+    	createButtonPanel(pi).initialize();
+    	createStatusPanel();
+    	
+    	JPanel mainGrid = createMainGrid();
+        getContentPane().add(mainGrid);
+        setGridSize();
+        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setName("jpacman.main");
+        setTitle("JPacman");  
 		return this;
-	}
-	
-	/**
-	 * Create a panel containing the start/stop buttons.
-	 * @param pi Interactor capable of performing requested actions.
-	 * @return The new panel with buttons.
-	 */
-	protected ButtonPanel createButtonPanel(PacmanInteraction pi) {
-		assert pi != null;
-		if (buttonPanel == null) {
-			buttonPanel = new ButtonPanel();
-		}
-		return buttonPanel
-			.withParent(this)
-			.withInteractor(pi);
-	}
-		
-	/**
-	 * Create the main grid containing all UI elements.
-	 * @return The newly created main grid.
-	 */
-	private JPanel createMainGrid() {
-		JPanel mainGrid = new JPanel();
-		mainGrid.setLayout(new BorderLayout());
-		mainGrid.setName("jpacman.topdown");
-		mainGrid.add(statusPanel, BorderLayout.NORTH);
-		mainGrid.add(boardView, BorderLayout.CENTER);
-		mainGrid.add(buttonPanel, BorderLayout.SOUTH);
-		return mainGrid;
-	}
-	
-	/**
-	 * Establish the appropriate size of the main window,
-	 * based on the sizes of the underlying components.
-	 */
-	private void setGridSize() {
-		int width = Math.max(boardView.windowWidth(), 
-				buttonPanel.getWidth());
-		
-		int height = 
-				points.getHeight()
-				+ boardView.windowHeight()
-				+ buttonPanel.getHeight();
-		
-		setSize(width, height);
-	}
-	
-	private void createStatusField() {
-		final int statusWidth = 12;
-		statusField = new JTextField("", statusWidth);
-		statusField.setEditable(false);
-		statusField.setName("jpacman.status");
-	}
-	
-	/**
-	 * Create the status panel displaying points,
-	 * whether the player is alive, etc.
-	 */
-	protected void createStatusPanel() {
-		statusPanel = new JPanel();
-		
-		createStatusField();
-		
-		points = new PointsPanel();
-		points.initialize(getGame().getPointManager());
-		getGame().attach(points);
-		
-		statusPanel.add(statusField);
-		statusPanel.add(points);
-	}
+    }
+    
+    /**
+     * Create a panel containing the start/stop buttons.
+     * @param pi Interactor capable of performing requested actions.
+     * @return The new panel with buttons.
+     */
+    protected ButtonPanel createButtonPanel(PacmanInteraction pi) {
+    	assert pi != null;
+    	if (buttonPanel == null) {
+    		buttonPanel = new ButtonPanel();
+    	}
+    	return buttonPanel
+     		.withParent(this)
+    		.withInteractor(pi);
+    }
+        
+    /**
+     * Create the main grid containing all UI elements.
+     * @return The newly created main grid.
+     */
+    private JPanel createMainGrid() {
+    	JPanel mainGrid = new JPanel();
+    	mainGrid.setLayout(new BorderLayout());
+    	mainGrid.setName("jpacman.topdown");
+        mainGrid.add(statusPanel, BorderLayout.NORTH);
+    	mainGrid.add(boardView, BorderLayout.CENTER);
+    	mainGrid.add(buttonPanel, BorderLayout.SOUTH);
+    	return mainGrid;
+    }
+    
+    /**
+     * Establish the appropriate size of the main window,
+     * based on the sizes of the underlying components.
+     */
+    private void setGridSize() {
+        int width = Math.max(boardView.windowWidth(), 
+        		buttonPanel.getWidth());
+        
+        int height = 
+        		points.getHeight()
+        		+ boardView.windowHeight()
+        		+ buttonPanel.getHeight();
+        
+        setSize(width, height);
+    }
+    
+    private void createStatusField() {
+    	final int statusWidth = 12;
+    	statusField = new JTextField("", statusWidth);
+    	statusField.setEditable(false);
+    	statusField.setName("jpacman.status");
+    }
+    
+    /**
+     * Create the status panel displaying points,
+     * whether the player is alive, etc.
+     */
+    protected void createStatusPanel() {
+    	statusPanel = new JPanel();
+    	
+    	createStatusField();
+    	
+    	points = new PointsPanel();
+    	points.initialize(getGame().getPointManager());
+    	getGame().attach(points);
+    	
+    	statusPanel.add(statusField);
+    	statusPanel.add(points);
+    }
 
-	/**
-	 * The state of the game has changed.
-	 * Reset button enabling depending on the state.
-	 * @param o Ignored
-	 * @param arg Ignored
-	 */
+    /**
+     * The state of the game has changed.
+     * Reset button enabling depending on the state.
+     * @param o Ignored
+     * @param arg Ignored
+     */
 	@Override
 	public void update(Observable o, Object arg) {
 		statusField.setText(pi.getCurrentState().message());
-		boardView.repaint();
-	}
+    	boardView.repaint();
+    }
 
 	/**
 	 * Create the controllers.
 	 * @throws FactoryException If required resources can't be loaded.
 	 * @return The main UI object.
 	 */
-	public MainUI initialize() throws FactoryException {
-		theGame = createModel();
-		getGame().attach(this);
+    public MainUI initialize() throws FactoryException {
+        theGame = createModel();
+        getGame().attach(this);
 		return this;
 	}
 	
@@ -203,18 +203,18 @@ public class MainUI extends JFrame implements Observer, IDisposable {
 	 */
 	public MainUI initializeNormalGame() throws FactoryException {
 		initialize();
-		withGhostController(new RandomGhostMover(getGame()));
-		createUI();
-		return this;
-	}
-		
-	/**
-	 * Actually start the the controllers, and show the UI.
-	 */
+        withGhostController(new RandomGhostMover(getGame()));
+      	createUI();
+      	return this;
+    }
+    	
+    /**
+     * Actually start the the controllers, and show the UI.
+     */
 	public void start()  {
 		animator.start();
-		setVisible(true);
-		requestFocus();
+        setVisible(true);
+        requestFocus();
 	}
 	
 	private BoardView createBoardView() throws FactoryException {
@@ -243,7 +243,7 @@ public class MainUI extends JFrame implements Observer, IDisposable {
 	public IGameInteractor getGame() {
 		return theGame;
 	}
-	
+
 	/**
 	 * @return The ghostController
 	 */

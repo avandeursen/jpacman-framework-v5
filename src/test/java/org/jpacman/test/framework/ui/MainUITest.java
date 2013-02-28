@@ -5,8 +5,11 @@ package org.jpacman.test.framework.ui;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assume.assumeTrue;
 
 import org.jpacman.framework.controller.IController;
 import org.jpacman.framework.controller.RandomGhostMover;
@@ -21,14 +24,14 @@ import org.junit.Test;
  */
 public class MainUITest {
 	
-	private MainUI mainui;
+	private MainUI mainUI;
 
 	/**
 	 * Create a MainUI to test with.
 	 */
 	@Before
 	public void setUp() {
-		mainui = new MainUI();
+		mainUI = new MainUI();
 	}
 
 	/**
@@ -38,13 +41,13 @@ public class MainUITest {
 	 */
 	@Test
 	public void testInitialize() throws FactoryException {	
-		assertNull(mainui.getGame());
-		IController ghostmover = mainui.getGhostController();
+		assertNull(mainUI.getGame());
+		IController ghostMover = mainUI.getGhostController();
 		
-		mainui.initialize();
+		mainUI.initialize();
 		
-		assertNotNull(mainui.getGame());
-		assertEquals(mainui.getGhostController(), ghostmover);
+		assertNotNull(mainUI.getGame());
+		assertEquals(ghostMover,mainUI.getGhostController());
 	}
 	
 	/**
@@ -54,27 +57,25 @@ public class MainUITest {
 	 */
 	@Test
 	public void testWithGhostController() throws FactoryException {	
-		mainui.initialize();
-		assertNull(mainui.getGhostController());
+		mainUI.initialize();
+		assertNull(mainUI.getGhostController());
 		
-		IController ghostmover1 = new RandomGhostMover(mainui.getGame());
-		IController ghostmover2 = new RandomGhostMover(mainui.getGame());
-		IController ghostmover3 = new RandomGhostMover(mainui.getGame());
+		IController ghostMover1 = new RandomGhostMover(mainUI.getGame());
+		IController ghostMover2 = new RandomGhostMover(mainUI.getGame());
 		
 		//Below we apply forced pointer comparison to check the setter.
-		mainui.withGhostController(ghostmover1);
-		assertTrue(mainui.getGhostController() == ghostmover1);
+		mainUI.withGhostController(ghostMover1);
+		assertSame(ghostMover1, mainUI.getGhostController());
 		
-		mainui.withGhostController(ghostmover2);
-		assertTrue(mainui.getGhostController() == ghostmover2);
-		
-		mainui.withGhostController(ghostmover3);
-		assertTrue(mainui.getGhostController() == ghostmover3);
+		//We do a second set call to confirm the first one is gone.
+		mainUI.withGhostController(ghostMover2);
+		assertNotSame(ghostMover1, mainUI.getGhostController());
+		assertSame(ghostMover2,mainUI.getGhostController());
 		
 		//The createUI function should not affect our current GhostController.
-		mainui.createUI();
+		mainUI.createUI();
 		
-		assertTrue(mainui.getGhostController() == ghostmover3);
+		assertSame(ghostMover2, mainUI.getGhostController());
 		
 	}
 	
@@ -83,27 +84,47 @@ public class MainUITest {
 	 * because no GhostController has been set.
 	 * @throws FactoryException if the initialize or createUI functions fail.
 	 */
-	@Test (expected = java.lang.AssertionError.class)
+	@Test
 	public void testCreateUIWithoutGhostController() throws FactoryException {
-		mainui.initialize();
+	    assumeTrue(MainUI.class.desiredAssertionStatus());
+	    
+	    boolean gotException = false;
+	    
+	    mainUI.initialize();
 		//Do not set a GhostController, this should cause an assertion error.
-		mainui.createUI();
+	    try {
+	        mainUI.createUI();    
+	    }
+	    catch(AssertionError ae) {
+	        gotException = true;
+	    }
+	    assertTrue(gotException);
 	}
-	
-	/**
+
+    /**
 	 * Test to see the withGhostController function fail,
 	 * because the withGhostController should not be allowed to
 	 * be called after the UI has been created by createUI.
 	 * @throws FactoryException if the initialize or createUI functions fail.
 	 */
-	@Test (expected = java.lang.AssertionError.class)
+	@Test
 	public void testChangeGhostControllerAfterUI() throws FactoryException {
-		mainui.initialize();
-		mainui.withGhostController(new RandomGhostMover(mainui.getGame()));
-		mainui.createUI();
+	    assumeTrue(MainUI.class.desiredAssertionStatus());
+		mainUI.initialize();
+		mainUI.withGhostController(new RandomGhostMover(mainUI.getGame()));
+		mainUI.createUI();
+		
+		boolean gotException = false;
+		
 		//After creating the UI, the GhostController should not be allowed to be changed.
 		//This should cause an assertion error.
-		mainui.withGhostController(new RandomGhostMover(mainui.getGame()));
+        try {
+            mainUI.withGhostController(new RandomGhostMover(mainUI.getGame()));    
+        }
+        catch(AssertionError ae) {
+            gotException = true;
+        }
+        assertTrue(gotException);		
 	}
 	
 	/**
@@ -113,12 +134,12 @@ public class MainUITest {
 	 */
 	@Test
 	public void testInitializeNormalGame() throws FactoryException {
-		mainui.initializeNormalGame();
+		mainUI.initializeNormalGame();
 		
-		assertNotNull(mainui.getGame());
-		assertTrue(mainui.getGhostController() instanceof RandomGhostMover);
+		assertNotNull(mainUI.getGame());
+		assertTrue(mainUI.getGhostController() instanceof RandomGhostMover);
 		//Check for the existence of the UI.
-		assertNotNull(mainui.eventHandler());
+		assertNotNull(mainUI.eventHandler());
 	}
 		
 }

@@ -47,7 +47,7 @@ public class MainUITest {
 		mainUI.initialize();
 		
 		assertNotNull(mainUI.getGame());
-		assertEquals(ghostMover,mainUI.getGhostController());
+		assertEquals(ghostMover, mainUI.getGhostController());
 	}
 	
 	/**
@@ -70,7 +70,7 @@ public class MainUITest {
 		//We do a second set call to confirm the first one is gone.
 		mainUI.withGhostController(ghostMover2);
 		assertNotSame(ghostMover1, mainUI.getGhostController());
-		assertSame(ghostMover2,mainUI.getGhostController());
+		assertSame(ghostMover2, mainUI.getGhostController());
 		
 		//The createUI function should not affect our current GhostController.
 		mainUI.createUI();
@@ -95,7 +95,7 @@ public class MainUITest {
 	    try {
 	        mainUI.createUI();    
 	    }
-	    catch(AssertionError ae) {
+	    catch (AssertionError ae) {
 	        gotException = true;
 	    }
 	    assertTrue(gotException);
@@ -121,7 +121,7 @@ public class MainUITest {
         try {
             mainUI.withGhostController(new RandomGhostMover(mainUI.getGame()));    
         }
-        catch(AssertionError ae) {
+        catch (AssertionError ae) {
             gotException = true;
         }
         assertTrue(gotException);		

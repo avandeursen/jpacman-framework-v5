@@ -71,8 +71,9 @@ public class MainUI extends JFrame implements Observer, IDisposable {
 	 * Create all the ui components and attach appropriate
 	 * listeners.
 	 * @throws FactoryException If resources for game can't be loaded.
+	 * @return The main UI object
 	 */
-    private void createUI() throws FactoryException {
+	public MainUI createUI() throws FactoryException {
     	assert getGame() != null;
     	assert ghostController != null;
     	
@@ -99,6 +100,7 @@ public class MainUI extends JFrame implements Observer, IDisposable {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setName("jpacman.main");
         setTitle("JPacman");  
+		return this;
     }
     
     /**
@@ -183,13 +185,24 @@ public class MainUI extends JFrame implements Observer, IDisposable {
     }
 
 	/**
-	 * Create the controllers and user interface elements.
+	 * Create the controllers.
 	 * @throws FactoryException If required resources can't be loaded.
 	 * @return The main UI object.
 	 */
     public MainUI initialize() throws FactoryException {
         theGame = createModel();
         getGame().attach(this);
+		return this;
+	}
+	
+	/**
+	 * Creates the controllers, sets a ghostmover and creates the ui.
+	 * Quickstart for normal gameplay.
+	 * @throws FactoryException If required resources can't be loaded.
+	 * @return The main UI object.
+	 */
+	public MainUI initializeNormalGame() throws FactoryException {
+		initialize();
         withGhostController(new RandomGhostMover(getGame()));
       	createUI();
       	return this;
@@ -232,12 +245,24 @@ public class MainUI extends JFrame implements Observer, IDisposable {
 	}
 
 	/**
+	 * @return The ghostController
+	 */
+	public IController getGhostController() {
+		return ghostController;
+	}
+
+	/**
 	 * Provide a given ghost controller.
+	 * This function can only be called before the createUI function.
 	 * @param gc The new ghost controller.
 	 * @return Itself for fluency.
 	 */
 	public MainUI withGhostController(IController gc) {
 		assert gc != null;
+		//The animator is not null if the createUI has already been called.
+		//If this is the case, the GhostController should not be allowed to change,
+		//because changes cannot be forwarded correctly.
+		assert animator == null;
 		ghostController = gc;
 		return this;
 	}
@@ -293,7 +318,7 @@ public class MainUI extends JFrame implements Observer, IDisposable {
 	 * @throws FactoryException If creating the game fails.
 	 */
 	public void main() throws FactoryException {
-		initialize();
+		initializeNormalGame();
 		start();
 	}
 		

@@ -37,13 +37,15 @@ public class MainUIFocusTest {
 	public void testFocusHandling() throws FactoryException {
 
 		MainUI ui = new MainUI();
-		ButtonPanel bp = new ButtonPanel();
-		ui.withModelInteractor(pi).withButtonPanel(bp);
+		ui.withModelInteractor(pi);
 		Robot robot = BasicRobot.robotWithCurrentAwtHierarchy();
 
 		ui.main();
-		bp.start();
+		
+		//hit start
+	    robot.click(robot.finder().findByName(ButtonPanel.START_BUTTON_NAME));
 
+		
 		// perform tab key press and wait until it took place
 		robot.pressAndReleaseKey(KeyEvent.VK_TAB);
 		robot.waitForIdle();

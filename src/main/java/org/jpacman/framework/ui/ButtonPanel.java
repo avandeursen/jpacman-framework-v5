@@ -29,6 +29,10 @@ public class ButtonPanel extends JPanel implements Observer {
 	
 	private JFrame parent;
 	
+	public static final String START_BUTTON_NAME = "jpacman.start"; 
+	public static final String STOP_BUTTON_NAME = "jpacman.stop"; 
+	public static final String EXIT_BUTTON_NAME = "jpacman.exit"; 
+	
 	/**
 	 * Set the listener capable of exercising the
 	 * requested events.
@@ -108,7 +112,7 @@ public class ButtonPanel extends JPanel implements Observer {
     			start();
     		}
     	});
-    	startButton.setName("jpacman.start");
+    	startButton.setName(START_BUTTON_NAME);
     	startButton.requestFocusInWindow();
      }
     
@@ -123,7 +127,7 @@ public class ButtonPanel extends JPanel implements Observer {
     			pause();
     		}
     	});
-    	stopButton.setName("jpacman.stop");
+    	stopButton.setName(STOP_BUTTON_NAME);
     }
     
     /**
@@ -131,6 +135,7 @@ public class ButtonPanel extends JPanel implements Observer {
      */
     protected JButton createExitButton() {
     	JButton exitButton = new JButton("Exit");
+    	exitButton.setName(EXIT_BUTTON_NAME);
     	exitButton.addActionListener(new ActionListener() {
     		@Override
 			public void actionPerformed(ActionEvent e) {

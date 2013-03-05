@@ -1,9 +1,10 @@
 package org.jpacman.test.framework.ui;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 import static org.junit.Assert.assertTrue;
 import java.awt.event.KeyEvent;
-import org.fest.swing.core.*;
+import org.fest.swing.core.BasicRobot;
+import org.fest.swing.core.Robot;
 import org.jpacman.framework.factory.FactoryException;
 import org.jpacman.framework.ui.ButtonPanel;
 import org.jpacman.framework.ui.MainUI;

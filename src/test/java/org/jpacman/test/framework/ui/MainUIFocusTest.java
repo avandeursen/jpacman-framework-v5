@@ -41,8 +41,7 @@ public class MainUIFocusTest {
 		ui.withModelInteractor(pi).withButtonPanel(bp);
 		Robot robot = BasicRobot.robotWithCurrentAwtHierarchy();
 
-		ui.initialize();
-		ui.start();
+		ui.main();
 		bp.start();
 
 		// perform tab key press and wait until it took place

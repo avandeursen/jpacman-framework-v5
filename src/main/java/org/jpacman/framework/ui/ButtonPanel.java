@@ -29,6 +29,10 @@ public class ButtonPanel extends JPanel implements Observer {
 	
 	private JFrame parent;
 	
+	public static final String START_BUTTON_NAME = "jpacman.start"; 
+	public static final String STOP_BUTTON_NAME = "jpacman.stop"; 
+	public static final String EXIT_BUTTON_NAME = "jpacman.exit"; 
+	
 	/**
 	 * Set the listener capable of exercising the
 	 * requested events.

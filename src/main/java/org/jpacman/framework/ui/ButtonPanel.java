@@ -112,7 +112,7 @@ public class ButtonPanel extends JPanel implements Observer {
     			start();
     		}
     	});
-    	startButton.setName("jpacman.start");
+    	startButton.setName(START_BUTTON_NAME);
     	startButton.requestFocusInWindow();
      }
     
@@ -127,7 +127,7 @@ public class ButtonPanel extends JPanel implements Observer {
     			pause();
     		}
     	});
-    	stopButton.setName("jpacman.stop");
+    	stopButton.setName(STOP_BUTTON_NAME);
     }
     
     /**
@@ -135,6 +135,7 @@ public class ButtonPanel extends JPanel implements Observer {
      */
     protected JButton createExitButton() {
     	JButton exitButton = new JButton("Exit");
+    	exitButton.setName(EXIT_BUTTON_NAME);
     	exitButton.addActionListener(new ActionListener() {
     		@Override
 			public void actionPerformed(ActionEvent e) {

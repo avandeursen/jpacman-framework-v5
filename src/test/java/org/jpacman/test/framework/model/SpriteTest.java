@@ -63,8 +63,8 @@ public class SpriteTest {
 	 */
 	@Test
 	public void multipleSprites() {
-		Sprite david = new Sprite() {
-		};
+        Sprite david = new Sprite() {
+        };
 		david.occupy(center);
 
 		// now David is the top most sprite.

@@ -7,8 +7,6 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import org.hamcrest.BaseMatcher;
-import org.hamcrest.Description;
 import org.hamcrest.FeatureMatcher;
 import org.hamcrest.Matcher;
 import org.jpacman.framework.model.Sprite;
@@ -65,8 +63,8 @@ public class SpriteTest {
 	 */
 	@Test
 	public void multipleSprites() {
-		Sprite david = new Sprite() {
-		};
+        Sprite david = new Sprite() {
+        };
 		david.occupy(center);
 
 		// now David is the top most sprite.

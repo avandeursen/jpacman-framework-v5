@@ -7,8 +7,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import org.hamcrest.BaseMatcher;
-import org.hamcrest.Description;
+import org.hamcrest.FeatureMatcher;
 import org.hamcrest.Matcher;
 import org.jpacman.framework.model.Sprite;
 import org.jpacman.framework.model.Tile;
@@ -64,8 +63,8 @@ public class SpriteTest {
 	 */
 	@Test
 	public void multipleSprites() {
-		Sprite david = new Sprite() {
-		};
+        Sprite david = new Sprite() {
+        };
 		david.occupy(center);
 
 		// now David is the top most sprite.
@@ -96,29 +95,18 @@ public class SpriteTest {
 		john.deoccupy();
 		assertNull(john.getTile());
 	}
-
+	
 	/**
 	 * @param expected
 	 *            The tile the sprite should be on.
-	 * @return A hamcrest matcher telling whether a sprite is the topmost one on
+	 * @return A hamcrest matcher telling whether a sprite is on
 	 *         a given tile.
 	 */
-	private static Matcher<Sprite> occupies(final Tile expected) {
-		return new BaseMatcher<Sprite>() {
-			private Tile theTile = expected;
-
-			@Override public boolean matches(Object o) {
-				if (!(o instanceof Sprite)) {
-					return false;
-				}
-				Sprite theSprite = (Sprite) o;
-				return theSprite.getTile().equals(theTile)
-						&& theTile.topSprite().equals(theSprite);
-			}
-
-			@Override public void describeTo(Description d) {
-				d.appendText("sprite occupying tile ");
-				d.appendValue(theTile);
+	public static Matcher<Sprite> occupies(final Tile expected) {
+		return new FeatureMatcher<Sprite, Tile>(equalTo(expected), "occupying", "tile") {
+			@Override
+			protected Tile featureValueOf(Sprite actual) {
+				return actual.getTile();
 			}
 		};
 	}

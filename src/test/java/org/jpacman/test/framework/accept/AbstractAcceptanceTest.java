@@ -67,7 +67,8 @@ public class AbstractAcceptanceTest {
 		theUI = makeUI()
 			.withBoard(ACCEPTANCE_MAP)
 		    .withGhostController(mockedGhostMover)
-		    .initialize();	
+		    .initialize()
+		    .createUI();	
 		theUI.start();
 		engine = theUI.eventHandler();
 		thePlayer = (Player) tileAt(1, 1).topSprite();

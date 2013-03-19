@@ -5,7 +5,7 @@
 
 	<groupId>nl.tudelft.jpacman</groupId>
 	<artifactId>jpacman-framework</artifactId>
-	<version>5.5</version>
+	<version>5.6</version>
 	<packaging>jar</packaging>
 	
 	<prerequisites>
@@ -22,11 +22,7 @@
 		<url>http://www.se.ewi.tudelft.nl/</url>
 	</organization>
 	<inceptionYear>2003</inceptionYear>
-	<description>JPacman is a little game inspired by Pacman.  
-	  It is intended for educational purposes, showing how unit 
-	  testing and software development can be done together in a 
-	  typical Java project.
-	</description>
+	<description>JPacman is a little game inspired by Pacman. It is intended for educational purposes, showing how unit testing and software development can be done together in a typical Java project.</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -106,6 +102,12 @@
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-all</artifactId>
 			<version>1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.easytesting</groupId>
+			<artifactId>fest-swing-junit</artifactId>
+			<version>1.2.1</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

@@ -25,6 +25,7 @@ public class Tile {
 		this.x = x;
 		this.y = y;
 		sprites = new ArrayDeque<Sprite>();
+		assert tileInvariant();
 	}
 	
 	/**

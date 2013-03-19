@@ -25,7 +25,7 @@ public class MainUISmokeTest {
 	@Test
 	public void testUIActions() throws FactoryException, InterruptedException {
 		MainUI ui = new MainUI();
-		ui.initialize();
+		ui.initializeNormalGame();
 		ui.start();
 		IPacmanInteraction eventHandler = ui.eventHandler();
 

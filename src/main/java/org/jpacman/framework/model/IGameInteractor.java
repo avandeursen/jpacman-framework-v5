@@ -30,6 +30,11 @@ public interface IGameInteractor {
 	void moveGhost(Ghost g, Direction dir);
 
 	/**
+	 * @return The player.
+	 */
+	Player getPlayer();
+
+	/**
 	 * @return The ghosts present in the game.
 	 */
 	List<Ghost> getGhosts();

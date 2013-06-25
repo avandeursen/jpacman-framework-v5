@@ -86,6 +86,7 @@ public class MainUI extends JFrame implements Observer, IDisposable {
     		.withGameInteractor(getGame())
     		.controlling(ghostController)
     		.controlling(animator);
+      	pi.addObserver(this);
 
       	// disable automatic focus traversal keys handling, so mainUI doesn't
      	// lose focus because of a traversal key press.

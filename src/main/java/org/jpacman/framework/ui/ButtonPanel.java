@@ -30,8 +30,12 @@ public class ButtonPanel extends JPanel implements Observer {
 	private JFrame parent;
 	
 	public static final String START_BUTTON_NAME = "jpacman.start"; 
+    public static final String START_BUTTON_TEXT = "Start"; 
 	public static final String STOP_BUTTON_NAME = "jpacman.stop"; 
+    public static final String STOP_BUTTON_TEXT = "Stop"; 	
 	public static final String EXIT_BUTTON_NAME = "jpacman.exit"; 
+    public static final String EXIT_BUTTON_TEXT = "Exit"; 
+	public static final String BUTTON_PANEL_NAME = "jpacman.buttonPanel";
 	
 	/**
 	 * Set the listener capable of exercising the
@@ -69,14 +73,15 @@ public class ButtonPanel extends JPanel implements Observer {
      * Actually create the buttons.
      */
     public void initialize() {    	
-    	startButton = new JButton("Start");
-    	stopButton = new JButton("Stop");
-    	initializeStartButton();
+    	startButton = new JButton(START_BUTTON_TEXT);
+        initializeStartButton();
+
+        stopButton = new JButton(STOP_BUTTON_TEXT);
     	initializeStopButton();
     	
     	JButton exitButton = createExitButton();
     	    	
-        setName("jpacman.buttonPanel");
+        setName(BUTTON_PANEL_NAME);
         addButton(startButton);
         addButton(stopButton);
         addButton(exitButton);       
@@ -134,7 +139,7 @@ public class ButtonPanel extends JPanel implements Observer {
      * @return A new button to exit the game.
      */
     protected JButton createExitButton() {
-    	JButton exitButton = new JButton("Exit");
+    	JButton exitButton = new JButton(EXIT_BUTTON_TEXT);
     	exitButton.setName(EXIT_BUTTON_NAME);
     	exitButton.addActionListener(new ActionListener() {
     		@Override

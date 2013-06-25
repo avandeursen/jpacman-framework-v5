@@ -13,7 +13,7 @@ Other universities who have used this material include Antwerp, Eindhoven, and U
 
 If you have any suggestions on how to improve this framework, please do not hesitate to contact me.
 
-If you have found a problem or have a feature request, please feel free to post an issue. If you have a solution for an issue, I look forward to your pull request, preferrably to the `snapshot` branch, in order to keep the `master` branch stable.
+If you have found a problem or have a feature request, please feel free to post an issue. If you have a solution for an issue, I look forward to your pull request.
 
 
 Arie van Deursen, 2003--2013.

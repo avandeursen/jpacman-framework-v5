@@ -150,6 +150,7 @@ public class Game extends Observable
 	/**
 	 * @return The player.
 	 */
+	@Override
 	public Player getPlayer() {
 		return thePlayer;
 	}

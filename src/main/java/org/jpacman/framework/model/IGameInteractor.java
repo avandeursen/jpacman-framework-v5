@@ -28,6 +28,11 @@ public interface IGameInteractor {
 	 * @param dir The direction to be taken.
 	 */
 	void moveGhost(Ghost g, Direction dir);
+	
+	/**
+	 * @return The player.
+	 */
+	Player getPlayer();
 
 	/**
 	 * @return The ghosts present in the game.

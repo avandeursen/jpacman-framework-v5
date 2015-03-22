@@ -1,6 +1,9 @@
 jpacman-framework
 =================
 
+**NOTE**: For newest version see https://github.com/SERG-Delft/jpacman-framework.
+_The present repository is not maintained anymore!_
+
 Pacman-like game used for teaching software testing.
 
 Parts of the code are well tested, whereas others are left untested intentionally.
